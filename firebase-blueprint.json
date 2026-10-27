@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "Profile": {
+      "title": "User Profile",
+      "description": "Professional profile information for resume generation",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "string", "description": "Full name of the user" },
+        "email": { "type": "string", "format": "email", "description": "Professional email address" },
+        "phone": { "type": "string", "description": "Contact phone number" },
+        "location": { "type": "string", "description": "City and country" },
+        "summary": { "type": "string", "description": "Professional summary or bio" },
+        "education": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "school": { "type": "string" },
+              "degree": { "type": "string" },
+              "year": { "type": "string" }
+            }
+          }
+        },
+        "experience": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "company": { "type": "string" },
+              "role": { "type": "string" },
+              "duration": { "type": "string" },
+              "description": { "type": "string" }
+            }
+          }
+        },
+        "skills": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "projects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "link": { "type": "string" }
+            }
+          }
+        },
+        "interests": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "User's areas of interest"
+        },
+        "strengths": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "User's core strengths"
+        },
+        "academicPreferences": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Preferred subjects or academic fields"
+        },
+        "careerAspirations": {
+          "type": "string",
+          "description": "User's long-term career goals"
+        },
+        "linkedin": {
+          "type": "string",
+          "description": "LinkedIn or professional profile link"
+        },
+        "birthDate": {
+          "type": "string",
+          "description": "Birth date or age"
+        },
+        "isFresher": {
+          "type": "boolean",
+          "description": "Whether the user is a fresher with no experience"
+        }
+      },
+      "required": ["fullName", "email"]
+    }
+  },
+  "firestore": {
+    "/profiles/{userId}": {
+      "schema": "Profile",
+      "description": "User professional profiles indexed by their Firebase Auth UID"
+    }
+  }
+}

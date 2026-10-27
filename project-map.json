@@ -1,0 +1,403 @@
+[
+  {
+    "path": "src/App.tsx",
+    "exports": [
+      "default"
+    ],
+    "imports": [
+      "react",
+      "./components/UserDetailsForm",
+      "./components/Presentation",
+      "./components/ExploreCareers",
+      "./components/HowItWorks",
+      "./components/Resources",
+      "./components/SuccessStories",
+      "./components/Profile",
+      "./components/OpenSchooling",
+      "./components/PrivacyPolicy",
+      "./components/TermsOfService",
+      "./components/ContactUs",
+      "./types",
+      "./services/geminiService",
+      "lucide-react",
+      "motion/react",
+      "./lib/utils",
+      "./firebase",
+      "firebase/auth",
+      "firebase/firestore",
+      "./contexts/LanguageContext",
+      "./contexts/ThemeContext",
+      "./lib/translations"
+    ],
+    "purpose": "Main Application Entry/Routing"
+  },
+  {
+    "path": "src/components/AdBanner.tsx",
+    "exports": [
+      "AdBanner"
+    ],
+    "imports": [
+      "react",
+      "lucide-react",
+      "motion/react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/BasicInfoForm.tsx",
+    "exports": [
+      "BasicInfoData",
+      "BasicInfoForm"
+    ],
+    "imports": [
+      "react",
+      "../contexts/LanguageContext",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ContactUs.tsx",
+    "exports": [
+      "ContactUs"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/EducationForm.tsx",
+    "exports": [
+      "EducationData",
+      "EducationForm"
+    ],
+    "imports": [
+      "react",
+      "../contexts/LanguageContext",
+      "lucide-react",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ExperienceForm.tsx",
+    "exports": [
+      "ExperienceData",
+      "ExperienceForm"
+    ],
+    "imports": [
+      "react",
+      "../contexts/LanguageContext",
+      "lucide-react",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ExploreCareers.tsx",
+    "exports": [
+      "ExploreCareers"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/HowItWorks.tsx",
+    "exports": [
+      "HowItWorks"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/OpenSchooling.tsx",
+    "exports": [
+      "OpenSchooling"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/Presentation.tsx",
+    "exports": [
+      "Presentation"
+    ],
+    "imports": [
+      "react",
+      "../types",
+      "react-markdown",
+      "recharts",
+      "motion/react",
+      "lucide-react",
+      "../lib/pdfExport",
+      "./AdBanner",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/PrivacyPolicy.tsx",
+    "exports": [
+      "PrivacyPolicy"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/Profile.tsx",
+    "exports": [
+      "Profile"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "../firebase",
+      "firebase/auth",
+      "firebase/firestore",
+      "lucide-react",
+      "jspdf",
+      "../contexts/LanguageContext",
+      "../contexts/ThemeContext",
+      "../lib/translations",
+      "../lib/utils",
+      "./UserDetailsForm",
+      "../types",
+      "./BasicInfoForm",
+      "./SelectionList",
+      "./ExperienceForm",
+      "./EducationForm",
+      "./SkillsForm",
+      "./ProjectsForm"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ProjectsForm.tsx",
+    "exports": [
+      "ProjectData",
+      "ProjectsForm"
+    ],
+    "imports": [
+      "react",
+      "../contexts/LanguageContext",
+      "lucide-react",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/Resources.tsx",
+    "exports": [
+      "Resources"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "./AdBanner",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/SelectionList.tsx",
+    "exports": [
+      "SelectionList"
+    ],
+    "imports": [
+      "react",
+      "../lib/utils",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/SkillsForm.tsx",
+    "exports": [
+      "SkillsForm"
+    ],
+    "imports": [
+      "react",
+      "../contexts/LanguageContext",
+      "lucide-react",
+      "./SelectionList"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/SuccessStories.tsx",
+    "exports": [
+      "SuccessStories"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "./AdBanner",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/TermsOfService.tsx",
+    "exports": [
+      "TermsOfService"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/UserDetailsForm.tsx",
+    "exports": [
+      "UserDetailsForm"
+    ],
+    "imports": [
+      "react",
+      "../types",
+      "../lib/utils",
+      "lucide-react",
+      "motion/react",
+      "../contexts/LanguageContext",
+      "./BasicInfoForm",
+      "./SelectionList",
+      "./ExperienceForm",
+      "./EducationForm",
+      "./SkillsForm",
+      "./ProjectsForm",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/contexts/LanguageContext.tsx",
+    "exports": [
+      "LanguageProvider",
+      "useLanguage"
+    ],
+    "imports": [
+      "react",
+      "../lib/translations"
+    ],
+    "purpose": "React Context/State Management"
+  },
+  {
+    "path": "src/contexts/ThemeContext.tsx",
+    "exports": [
+      "ThemeProvider",
+      "useTheme"
+    ],
+    "imports": [
+      "react"
+    ],
+    "purpose": "React Context/State Management"
+  },
+  {
+    "path": "src/firebase.ts",
+    "exports": [
+      "auth",
+      "db",
+      "googleProvider"
+    ],
+    "imports": [
+      "firebase/app",
+      "firebase/auth",
+      "firebase/firestore",
+      "../firebase-applet-config.json"
+    ],
+    "purpose": "General Logic"
+  },
+  {
+    "path": "src/lib/pdfExport.ts",
+    "exports": [],
+    "imports": [
+      "jspdf",
+      "html2canvas",
+      "../types"
+    ],
+    "purpose": "Utility/Library functions"
+  },
+  {
+    "path": "src/lib/translations.ts",
+    "exports": [
+      "translations",
+      "Language",
+      "TranslationKey"
+    ],
+    "imports": [],
+    "purpose": "Utility/Library functions"
+  },
+  {
+    "path": "src/lib/utils.ts",
+    "exports": [
+      "cn",
+      "getFirstIncompleteStep",
+      "isProfileComplete"
+    ],
+    "imports": [
+      "clsx",
+      "tailwind-merge"
+    ],
+    "purpose": "Utility/Library functions"
+  },
+  {
+    "path": "src/main.tsx",
+    "exports": [],
+    "imports": [
+      "react",
+      "react-dom/client",
+      "./App.tsx",
+      "./contexts/LanguageContext",
+      "./contexts/ThemeContext"
+    ],
+    "purpose": "General Logic"
+  },
+  {
+    "path": "src/services/geminiService.ts",
+    "exports": [],
+    "imports": [
+      "@google/genai",
+      "../types"
+    ],
+    "purpose": "API/External Service Logic"
+  },
+  {
+    "path": "src/types.ts",
+    "exports": [
+      "StudentProfile",
+      "CareerSlide",
+      "GuidanceResult"
+    ],
+    "imports": [],
+    "purpose": "Type Definitions"
+  }
+]

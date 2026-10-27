@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *):not(.force-light, .force-light *));
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 font-sans;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-semibold tracking-tight;
+  }
+}
+
+.presentation-slide {
+  @apply min-h-[500px] flex flex-col p-8 rounded-2xl bg-white dark:bg-slate-900 shadow-xl border border-slate-100 dark:border-slate-800;
+}
+
+@utility scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.markdown-body {
+  @apply text-slate-700 dark:text-slate-300;
+}
+.markdown-body h1 { @apply text-2xl font-bold mb-4 text-slate-900 dark:text-white; }
+.markdown-body h2 { @apply text-xl font-bold mb-3 mt-6 text-slate-800 dark:text-slate-100; }
+.markdown-body h3 { @apply text-lg font-bold mb-2 mt-4 text-slate-800 dark:text-slate-100; }
+.markdown-body p { @apply mb-4 leading-relaxed; }
+.markdown-body ul { @apply list-disc pl-6 mb-4 space-y-2; }
+.markdown-body li { @apply leading-relaxed; }
+.markdown-body strong { @apply font-bold text-slate-900 dark:text-white; }
+.markdown-body a { @apply text-indigo-600 dark:text-indigo-400 hover:underline; }
+
