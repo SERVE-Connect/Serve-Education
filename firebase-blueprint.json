@@ -81,12 +81,74 @@
         }
       },
       "required": ["fullName", "email"]
+    },
+    "CourseFolder": {
+      "title": "Course Folder",
+      "description": "Directory category for organizing custom HTML courses",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "createdAt": { "type": "number" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "Course": {
+      "title": "Course",
+      "description": "Interactive HTML course module uploaded by admin",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "folderId": { "type": "string" },
+        "title": { "type": "string" },
+        "fileName": { "type": "string" },
+        "htmlContent": { "type": "string" },
+        "description": { "type": "string" },
+        "difficulty": { "type": "string", "enum": ["Beginner", "Intermediate", "Advanced"] },
+        "estimatedMinutes": { "type": "number" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "createdAt": { "type": "number" },
+        "createdBy": { "type": "string" }
+      },
+      "required": ["id", "folderId", "title", "fileName"]
+    },
+    "UserLearningData": {
+      "title": "User Learning Data",
+      "description": "Persisted scores, progress, preps, competitions, certificates and rewards per user ID",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "courseProgress": { "type": "object" },
+        "testScores": { "type": "array", "items": { "type": "object" } },
+        "preps": { "type": "array", "items": { "type": "object" } },
+        "competitions": { "type": "array", "items": { "type": "object" } },
+        "certificates": { "type": "array", "items": { "type": "object" } },
+        "xp": { "type": "number" },
+        "badges": { "type": "array", "items": { "type": "string" } },
+        "lastActivityAt": { "type": "number" }
+      },
+      "required": ["userId"]
     }
   },
   "firestore": {
     "/profiles/{userId}": {
       "schema": "Profile",
       "description": "User professional profiles indexed by their Firebase Auth UID"
+    },
+    "/courseFolders/{folderId}": {
+      "schema": "CourseFolder",
+      "description": "Course directories managed by admin"
+    },
+    "/courses/{courseId}": {
+      "schema": "Course",
+      "description": "Interactive courses organized under folders"
+    },
+    "/userLearningData/{userId}": {
+      "schema": "UserLearningData",
+      "description": "User progress, scoreboard, tests, preps, and certificates"
     }
   }
 }

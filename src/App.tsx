@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { UserDetailsForm } from './components/UserDetailsForm';
 import { Presentation } from './components/Presentation';
 import { ExploreCareers } from './components/ExploreCareers';
+import { Learn } from './components/Learn';
 import { HowItWorks } from './components/HowItWorks';
 import { Resources } from './components/Resources';
 import { SuccessStories } from './components/SuccessStories';
@@ -28,7 +29,7 @@ import { Language, translations } from './lib/translations';
 export default function App() {
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
-  const [view, setView] = useState<'landing' | 'user-details' | 'presentation' | 'explore' | 'resources' | 'success-stories' | 'profile' | 'open-schooling' | 'privacy' | 'terms' | 'contact'>('landing');
+  const [view, setView] = useState<'landing' | 'user-details' | 'presentation' | 'explore' | 'learn' | 'resources' | 'success-stories' | 'profile' | 'open-schooling' | 'privacy' | 'terms' | 'contact'>('landing');
   const [isLoading, setIsLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [result, setResult] = useState<GuidanceResult | null>(null);
@@ -158,6 +159,7 @@ export default function App() {
   };
 
   const goToExplore = () => { setView('explore'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToLearn = () => { setView('learn'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToResources = () => { setView('resources'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToSuccessStories = () => { setView('success-stories'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToProfile = () => { setView('profile'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -309,6 +311,7 @@ export default function App() {
           </div>
           <nav className="hidden lg:flex items-center gap-6">
             <button onClick={goToExplore} className={cn("text-sm font-medium transition-colors", view === 'explore' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('exploreCareers')}</button>
+            <button onClick={goToLearn} className={cn("text-sm font-medium transition-colors", view === 'learn' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('learn')}</button>
             <button onClick={goToResources} className={cn("text-sm font-medium transition-colors", view === 'resources' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('resources')}</button>
             <button onClick={goToOpenSchooling} className={cn("text-sm font-medium transition-colors", view === 'open-schooling' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('openSchooling')}</button>
             <button onClick={goToSuccessStories} className={cn("text-sm font-medium transition-colors", view === 'success-stories' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('successStories')}</button>
@@ -353,6 +356,7 @@ export default function App() {
                   {t('startGuide')} <ArrowRight size={18} />
                 </button>
                 <button onClick={goToExplore} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('exploreCareers')}</button>
+                <button onClick={goToLearn} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('learn')}</button>
                 <button onClick={goToResources} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('resources')}</button>
                 <button onClick={goToOpenSchooling} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('openSchooling')}</button>
                 <button onClick={goToSuccessStories} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('successStories')}</button>
@@ -622,6 +626,16 @@ export default function App() {
             <ExploreCareers 
               onSelectCareer={handleSelectRelatedCareer} 
               onNavigateToResources={goToResources}
+            />
+          )}
+
+          {view === 'learn' && (
+            <Learn 
+              user={user}
+              userProfileName={userProfile?.fullName}
+              onNavigateToExplore={goToExplore}
+              onNavigateToResources={goToResources}
+              onRequireAuth={() => setView('user-details')}
             />
           )}
 

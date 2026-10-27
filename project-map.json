@@ -9,6 +9,7 @@
       "./components/UserDetailsForm",
       "./components/Presentation",
       "./components/ExploreCareers",
+      "./components/Learn",
       "./components/HowItWorks",
       "./components/Resources",
       "./components/SuccessStories",
@@ -147,6 +148,20 @@
       "motion/react",
       "lucide-react",
       "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/Learn.tsx",
+    "exports": [
+      "Learn"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "../types",
+      "firebase/auth",
+      "../firebase"
     ],
     "purpose": "UI Component"
   },
@@ -514,6 +529,24 @@
     "purpose": "General Logic"
   },
   {
+    "path": "src/services/courseService.ts",
+    "exports": [
+      "ADMIN_EMAIL",
+      "ADMIN_EMAILS",
+      "isUserAdmin",
+      "DEFAULT_FOLDERS",
+      "DEFAULT_COURSES",
+      "INITIAL_PREPS",
+      "INITIAL_COMPETITIONS"
+    ],
+    "imports": [
+      "firebase/firestore",
+      "../firebase",
+      "../types"
+    ],
+    "purpose": "API/External Service Logic"
+  },
+  {
     "path": "src/services/geminiService.ts",
     "exports": [],
     "imports": [
@@ -527,7 +560,14 @@
     "exports": [
       "StudentProfile",
       "CareerSlide",
-      "GuidanceResult"
+      "GuidanceResult",
+      "CourseFolder",
+      "Course",
+      "TestScore",
+      "PrepItem",
+      "CompetitionEntry",
+      "Certificate",
+      "UserLearningData"
     ],
     "imports": [],
     "purpose": "Type Definitions"

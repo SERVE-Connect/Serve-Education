@@ -10,11 +10,36 @@ service cloud.firestore {
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
     }
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'i.k.shaikh@gmail.com'
+      );
+    }
 
     // ===============================================================
     // User Profiles
     // ===============================================================
     match /profiles/{userId} {
+      allow read, write: if isOwner(userId);
+    }
+
+    // ===============================================================
+    // Course Folders & Courses
+    // ===============================================================
+    match /courseFolders/{folderId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /courses/{courseId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // ===============================================================
+    // User Learning Data & Progress
+    // ===============================================================
+    match /userLearningData/{userId} {
       allow read, write: if isOwner(userId);
     }
   }

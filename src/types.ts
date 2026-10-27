@@ -75,3 +75,80 @@ export interface GuidanceResult {
     link: string;
   }[];
 }
+
+export interface CourseFolder {
+  id: string;
+  name: string;
+  description?: string;
+  icon?: string;
+  createdAt: number;
+  createdBy?: string;
+}
+
+export interface Course {
+  id: string;
+  folderId: string;
+  title: string;
+  fileName: string;
+  htmlContent: string;
+  filePath?: string;
+  description: string;
+  difficulty: 'Beginner' | 'Intermediate' | 'Advanced';
+  estimatedMinutes: number;
+  tags: string[];
+  createdAt: number;
+  createdBy?: string;
+}
+
+export interface TestScore {
+  testId: string;
+  courseId: string;
+  courseTitle: string;
+  quizTitle: string;
+  score: number;
+  maxScore: number;
+  percentage: number;
+  date: number;
+  passed: boolean;
+}
+
+export interface PrepItem {
+  id: string;
+  courseId: string;
+  title: string;
+  category: string;
+  completed: boolean;
+  completedAt?: number;
+}
+
+export interface CompetitionEntry {
+  id: string;
+  title: string;
+  courseTitle: string;
+  rank?: number;
+  score: number;
+  date: number;
+  badge: string;
+}
+
+export interface Certificate {
+  id: string;
+  courseId: string;
+  courseTitle: string;
+  recipientName: string;
+  issueDate: number;
+  score: number;
+  certificateNumber: string;
+}
+
+export interface UserLearningData {
+  userId: string;
+  courseProgress: Record<string, number>; // courseId -> percentage (0 - 100)
+  testScores: TestScore[];
+  preps: PrepItem[];
+  competitions: CompetitionEntry[];
+  certificates: Certificate[];
+  xp: number;
+  badges: string[];
+  lastActivityAt: number;
+}
