@@ -10,12 +10,40 @@ service cloud.firestore {
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
     }
+    // Admins can read every learner result. Replace the placeholder with real Google account emails.
+    function isAdmin() {
+      return isAuthenticated()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in ['REPLACE_WITH_ADMIN_EMAIL@example.com'];
+    }
 
     // ===============================================================
     // User Profiles
     // ===============================================================
     match /profiles/{userId} {
       allow read, write: if isOwner(userId);
+    }
+
+    // ===============================================================
+    // Learn results: one document per submitted attempt. Create-only, so nobody can edit or delete history.
+    // Note: scores are calculated in the learner's browser, so rules can check shape and limits but not honesty.
+    // ===============================================================
+    match /learnResults/{resultId} {
+      allow read: if isAdmin() || (isAuthenticated() && resource.data.uid == request.auth.uid);
+      allow create: if isAuthenticated()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasAll(['uid', 'tutorialId', 'score', 'max', 'items', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['uid', 'tutorialId', 'tutorialTitle', 'studentName', 'email', 'linkedin',
+             'qualification', 'passOutYear', 'score', 'max', 'finished', 'total', 'attempt', 'startedAt', 'timeTakenSec',
+             'items', 'createdAt'])
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.tutorialId is string && request.resource.data.tutorialId.size() <= 64
+        && request.resource.data.score is int && request.resource.data.max is int
+        && request.resource.data.score >= 0 && request.resource.data.score <= request.resource.data.max
+        && request.resource.data.items is list && request.resource.data.items.size() <= 20
+        && request.resource.data.studentName.size() <= 100
+        && request.resource.data.email.size() <= 200;
+      allow update, delete: if false;
     }
   }
 }

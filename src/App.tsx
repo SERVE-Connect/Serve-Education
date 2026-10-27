@@ -7,6 +7,7 @@ import { Resources } from './components/Resources';
 import { SuccessStories } from './components/SuccessStories';
 import { Profile } from './components/Profile';
 import { OpenSchooling } from './components/OpenSchooling';
+import { Learn } from './components/Learn';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfService } from './components/TermsOfService';
 import { ContactUs } from './components/ContactUs';
@@ -28,7 +29,7 @@ import { Language, translations } from './lib/translations';
 export default function App() {
   const { t, language, setLanguage } = useLanguage();
   const { theme, setTheme } = useTheme();
-  const [view, setView] = useState<'landing' | 'user-details' | 'presentation' | 'explore' | 'resources' | 'success-stories' | 'profile' | 'open-schooling' | 'privacy' | 'terms' | 'contact'>('landing');
+  const [view, setView] = useState<'landing' | 'user-details' | 'presentation' | 'explore' | 'resources' | 'success-stories' | 'profile' | 'open-schooling' | 'learn' | 'privacy' | 'terms' | 'contact'>('landing');
   const [isLoading, setIsLoading] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [result, setResult] = useState<GuidanceResult | null>(null);
@@ -162,6 +163,7 @@ export default function App() {
   const goToSuccessStories = () => { setView('success-stories'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToProfile = () => { setView('profile'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToOpenSchooling = () => { setView('open-schooling'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToLearn = () => { setView('learn'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToPrivacy = () => { setView('privacy'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToTerms = () => { setView('terms'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
   const goToContact = () => { setView('contact'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
@@ -311,6 +313,7 @@ export default function App() {
             <button onClick={goToExplore} className={cn("text-sm font-medium transition-colors", view === 'explore' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('exploreCareers')}</button>
             <button onClick={goToResources} className={cn("text-sm font-medium transition-colors", view === 'resources' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('resources')}</button>
             <button onClick={goToOpenSchooling} className={cn("text-sm font-medium transition-colors", view === 'open-schooling' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('openSchooling')}</button>
+            <button onClick={goToLearn} className={cn("text-sm font-medium transition-colors", view === 'learn' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('learn')}</button>
             <button onClick={goToSuccessStories} className={cn("text-sm font-medium transition-colors", view === 'success-stories' ? "text-indigo-600" : "text-slate-600 dark:text-slate-400 hover:text-indigo-600")}>{t('successStories')}</button>
             
             <div className="h-6 w-px bg-slate-200 dark:bg-slate-700 mx-2" />
@@ -355,6 +358,7 @@ export default function App() {
                 <button onClick={goToExplore} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('exploreCareers')}</button>
                 <button onClick={goToResources} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('resources')}</button>
                 <button onClick={goToOpenSchooling} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('openSchooling')}</button>
+                <button onClick={goToLearn} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('learn')}</button>
                 <button onClick={goToSuccessStories} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors">{t('successStories')}</button>
                 
                 <button onClick={goToProfile} className="w-full text-left px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:text-indigo-600 transition-colors flex items-center gap-2">
@@ -656,6 +660,10 @@ export default function App() {
 
           {view === 'open-schooling' && (
             <OpenSchooling />
+          )}
+
+          {view === 'learn' && (
+            <Learn user={user} profile={userProfile} />
           )}
 
           {view === 'privacy' && (

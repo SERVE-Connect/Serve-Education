@@ -1,7 +1,12 @@
-import { GoogleGenAI } from "@google/genai";
+import { getGenerativeModel } from "firebase/ai";
 import { StudentProfile, GuidanceResult, CareerSlide } from "../types";
+import { ai } from "../firebase";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Stable Flash model that works on the free Firebase plan (no Blaze needed with the Gemini Developer API).
+const model = getGenerativeModel(ai, {
+  model: "gemini-3.8-flash",
+  generationConfig: { responseMimeType: "application/json" },
+});
 
 export async function generateGuidance(profile: StudentProfile): Promise<GuidanceResult> {
   const prompt = `
@@ -90,20 +95,13 @@ export async function generateGuidance(profile: StudentProfile): Promise<Guidanc
       ]
     }
 
-    Use Google Search to ensure the data about top colleges, salaries, and future trends in India is accurate and up-to-date.
+    You cannot browse the web. Use your best knowledge of top colleges, salaries, and future trends in India, give salaries and trends as approximate ranges, and for every link give only the official homepage of the organisation (never guess a deep link).
   `;
 
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: prompt,
-      config: {
-        tools: [{ googleSearch: {} }],
-        responseMimeType: "application/json",
-      },
-    });
+    const response = await model.generateContent(prompt);
 
-    const result = JSON.parse(response.text || "{}");
+    const result = JSON.parse(response.response.text() || "{}");
     
     if (!result.slides || !Array.isArray(result.slides) || result.slides.length === 0) {
       throw new Error("Invalid response format: missing slides");

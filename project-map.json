@@ -14,6 +14,7 @@
       "./components/SuccessStories",
       "./components/Profile",
       "./components/OpenSchooling",
+      "./components/Learn",
       "./components/PrivacyPolicy",
       "./components/TermsOfService",
       "./components/ContactUs",
@@ -147,6 +148,23 @@
       "motion/react",
       "lucide-react",
       "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/Learn.tsx",
+    "exports": [
+      "Learn"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "firebase/auth",
+      "firebase/firestore",
+      "../firebase",
+      "../contexts/LanguageContext",
+      "../types"
     ],
     "purpose": "UI Component"
   },
@@ -450,10 +468,13 @@
     "exports": [
       "auth",
       "db",
-      "googleProvider"
+      "googleProvider",
+      "ai"
     ],
     "imports": [
       "firebase/app",
+      "firebase/app-check",
+      "firebase/ai",
       "firebase/auth",
       "firebase/firestore",
       "../firebase-applet-config.json"
@@ -517,8 +538,9 @@
     "path": "src/services/geminiService.ts",
     "exports": [],
     "imports": [
-      "@google/genai",
-      "../types"
+      "firebase/ai",
+      "../types",
+      "../firebase"
     ],
     "purpose": "API/External Service Logic"
   },
@@ -526,6 +548,8 @@
     "path": "src/types.ts",
     "exports": [
       "StudentProfile",
+      "LearnResultItem",
+      "LearnResult",
       "CareerSlide",
       "GuidanceResult"
     ],

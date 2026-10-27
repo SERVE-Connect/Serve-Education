@@ -24,6 +24,35 @@ export interface StudentProfile {
   lastReportAt?: number;
 }
 
+export interface LearnResultItem {
+  label: string;
+  status: string;
+  pts: number;
+  max: number;
+  detail: string;
+}
+
+export interface LearnResult {
+  id?: string;
+  uid: string;
+  tutorialId: string;
+  tutorialTitle: string;
+  studentName: string;
+  email: string;
+  linkedin: string;
+  qualification: string;
+  passOutYear: string;
+  score: number;
+  max: number;
+  finished: number;
+  total: number;
+  attempt: number;
+  startedAt: number;
+  timeTakenSec: number;
+  items: LearnResultItem[];
+  createdAt?: { toDate(): Date };
+}
+
 export interface CareerSlide {
   title: string;
   content: string;
