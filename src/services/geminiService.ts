@@ -16,7 +16,7 @@ export async function generateGuidance(profile: StudentProfile): Promise<Guidanc
     - Projects: ${profile.projects?.map(p => `${p.name}: ${p.description}`).join(' | ') || 'Not provided'}
     - Experience: ${profile.isFresher ? 'Fresher (No formal experience)' : profile.experience?.map(e => `${e.role} at ${e.company} (${e.duration}): ${e.description}`).join(' | ')}
 
-    Based on this, suggest the most suitable career path and educational stream (e.g., Science/PCM, Science/PCB, Commerce, Humanities, Vocational).
+    Based on this, suggest the most suitable career path and educational stream (e.g., Science (PCM - Physics, Chemistry, Math & CS), Science (PCMB - Bio-Engineering & Biophysics), Science (PCB - Biomedical Sciences), Interdisciplinary Cognitive Sciences & AI, Commerce, Humanities, or Vocational).
     
     Format the response as a JSON object with the following structure:
     {

@@ -15,7 +15,7 @@ import { Toast } from './components/Toast';
 import { GeneratingOverlay } from './components/GeneratingOverlay';
 import { StudentProfile, GuidanceResult } from './types';
 import { generateGuidance } from './services/geminiService';
-import { Sparkles, BookOpen, Users, ArrowRight, Star, User as UserIcon, Menu, X, Globe, Sun, Moon, Loader2 } from 'lucide-react';
+import { Sparkles, BookOpen, Users, ArrowRight, Star, User as UserIcon, Menu, X, Globe, Sun, Moon, Loader2, Brain, Atom, Dna, Rocket, Cpu, Compass, Zap, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn, isProfileComplete, cleanObject, getFirstIncompleteStep } from './lib/utils';
 import { auth, db } from './firebase';
@@ -157,14 +157,14 @@ export default function App() {
     setIsMenuOpen(false);
   };
 
-  const goToExplore = () => { setView('explore'); setIsMenuOpen(false); };
-  const goToResources = () => { setView('resources'); setIsMenuOpen(false); };
-  const goToSuccessStories = () => { setView('success-stories'); setIsMenuOpen(false); };
-  const goToProfile = () => { setView('profile'); setIsMenuOpen(false); };
-  const goToOpenSchooling = () => { setView('open-schooling'); setIsMenuOpen(false); };
-  const goToPrivacy = () => { setView('privacy'); setIsMenuOpen(false); window.scrollTo(0, 0); };
-  const goToTerms = () => { setView('terms'); setIsMenuOpen(false); window.scrollTo(0, 0); };
-  const goToContact = () => { setView('contact'); setIsMenuOpen(false); window.scrollTo(0, 0); };
+  const goToExplore = () => { setView('explore'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToResources = () => { setView('resources'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToSuccessStories = () => { setView('success-stories'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToProfile = () => { setView('profile'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToOpenSchooling = () => { setView('open-schooling'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToPrivacy = () => { setView('privacy'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToTerms = () => { setView('terms'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+  const goToContact = () => { setView('contact'); setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); };
 
   const handleSubmit = async (profile: StudentProfile) => {
     setIsLoading(true);
@@ -299,7 +299,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
       {/* Header */}
-      <header className="bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50">
+      <header className="bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 sticky top-0 z-50 w-full shadow-xs">
         <div className="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2 cursor-pointer" onClick={handleReset}>
             <div className="w-10 h-10 flex items-center justify-center">
@@ -458,6 +458,131 @@ export default function App() {
                 </div>
               </div>
 
+              {/* Frontier & Advanced Careers Section (Direct on Landing Page) */}
+              <div className="mt-20 text-left">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-slate-200 dark:border-slate-800 gap-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 dark:bg-indigo-950/60 border border-indigo-200 dark:border-indigo-800 text-indigo-600 dark:text-indigo-400 text-xs font-semibold mb-2">
+                      <Sparkles size={13} className="animate-pulse" />
+                      <span>Frontier & Next-Gen Careers 2026–2035</span>
+                    </div>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">
+                      Explore Cutting-Edge Deep Tech & Science
+                    </h2>
+                    <p className="text-sm md:text-base text-slate-500 dark:text-slate-400 mt-1">
+                      Click any frontier career to generate a personalized AI-powered education roadmap & stream guide.
+                    </p>
+                  </div>
+                  <button
+                    onClick={goToExplore}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-sm font-semibold transition-all shadow-md shadow-indigo-200 dark:shadow-none shrink-0"
+                  >
+                    <Compass size={16} />
+                    <span>View All 30+ Careers & Streams</span>
+                    <ArrowRight size={16} />
+                  </button>
+                </div>
+
+                {/* 7 Requested Career Cards with direct generation */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                  {[
+                    {
+                      name: 'AGI & Superintelligence',
+                      stream: 'Science (PCM) + CS',
+                      icon: <Brain className="text-violet-500" size={22} />,
+                      desc: 'AI reasoning architectures, superalignment & large frontier models.',
+                      tag: 'AI Frontier',
+                      border: 'hover:border-violet-500'
+                    },
+                    {
+                      name: 'Quantum Physics & Computing',
+                      stream: 'Science (PCM) / Pure Physics',
+                      icon: <Atom className="text-blue-500" size={22} />,
+                      desc: 'Qubit hardware, quantum algorithms & topological matter.',
+                      tag: 'Quantum Tech',
+                      border: 'hover:border-blue-500'
+                    },
+                    {
+                      name: 'Bio-Engineering & Longevity',
+                      stream: 'Science (PCMB) / Biotech',
+                      icon: <Dna className="text-emerald-500" size={22} />,
+                      desc: 'Cellular rejuvenation, regenerative medicine & healthspan tech.',
+                      tag: 'Biotech',
+                      border: 'hover:border-emerald-500'
+                    },
+                    {
+                      name: 'Material Science & Nanotech',
+                      stream: 'Science (PCM) / Materials',
+                      icon: <Cpu className="text-cyan-500" size={22} />,
+                      desc: '2D materials, metamaterials & room-temp superconductors.',
+                      tag: 'Nanomaterials',
+                      border: 'hover:border-cyan-500'
+                    },
+                    {
+                      name: 'Neuroscience & Brain-Computer Interface',
+                      stream: 'Science (PCMB) / Cognitive Sci',
+                      icon: <Brain className="text-purple-500" size={22} />,
+                      desc: 'Neural implants, EEG signal decoding & sensory prosthetics.',
+                      tag: 'Neurotech',
+                      border: 'hover:border-purple-500'
+                    },
+                    {
+                      name: 'Fusion Energy & Space Tech',
+                      stream: 'Science (PCM) / Aerospace',
+                      icon: <Rocket className="text-amber-500" size={22} />,
+                      desc: 'Tokamak plasma physics, orbital launchers & space habitats.',
+                      tag: 'Space & Fusion',
+                      border: 'hover:border-amber-500'
+                    },
+                    {
+                      name: 'Robotics & Autonomous Systems',
+                      stream: 'Science (PCM) / Mechatronics',
+                      icon: <Zap className="text-rose-500" size={22} />,
+                      desc: 'Humanoid robotics, spatial AI perception & autonomous fleet systems.',
+                      tag: 'Robotics',
+                      border: 'hover:border-rose-500'
+                    },
+                    {
+                      name: 'Neuromorphic Computing & AI Chips',
+                      stream: 'Science (PCM) / Microelectronics',
+                      icon: <Cpu className="text-indigo-500" size={22} />,
+                      desc: 'Brain-inspired silicon, spiking neural networks & edge AI.',
+                      tag: 'Hardware',
+                      border: 'hover:border-indigo-500'
+                    }
+                  ].map((career) => (
+                    <div
+                      key={career.name}
+                      onClick={() => handleSelectRelatedCareer(career.name)}
+                      className={`p-5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 ${career.border} hover:shadow-lg transition-all duration-200 cursor-pointer flex flex-col justify-between group`}
+                    >
+                      <div>
+                        <div className="flex items-center justify-between mb-3">
+                          <div className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
+                            {career.icon}
+                          </div>
+                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                            {career.tag}
+                          </span>
+                        </div>
+                        <h4 className="font-bold text-slate-900 dark:text-white text-base mb-1.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                          {career.name}
+                        </h4>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed mb-3">
+                          {career.desc}
+                        </p>
+                      </div>
+                      <div className="pt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between text-xs">
+                        <span className="text-indigo-600 dark:text-indigo-400 font-medium text-[11px]">
+                          {career.stream}
+                        </span>
+                        <ChevronRight size={14} className="text-slate-400 group-hover:text-indigo-600 group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div id="how-it-works-section" className="mt-32 pt-20 border-t border-slate-100 dark:border-slate-800">
                 <HowItWorks onStart={handleStart} />
               </div>
@@ -494,11 +619,14 @@ export default function App() {
           )}
 
           {view === 'explore' && (
-            <ExploreCareers onSelectCareer={handleSelectRelatedCareer} />
+            <ExploreCareers 
+              onSelectCareer={handleSelectRelatedCareer} 
+              onNavigateToResources={goToResources}
+            />
           )}
 
           {view === 'resources' && (
-            <Resources />
+            <Resources onSelectCareer={handleSelectRelatedCareer} />
           )}
 
           {view === 'success-stories' && (

@@ -23,9 +23,9 @@ interface UserDetailsFormProps {
   pendingIntent?: 'guide' | 'resume' | 'share' | null;
 }
 
-const INTERESTS = ['Technology', 'Arts', 'Science', 'Business', 'Social Work', 'Law', 'Medicine', 'Sports', 'Design', 'Writing'];
-const STRENGTHS = ['Problem Solving', 'Creativity', 'Communication', 'Leadership', 'Analytical Thinking', 'Empathy', 'Discipline', 'Public Speaking'];
-const SUBJECTS = ['Mathematics', 'Physics', 'Chemistry', 'Biology', 'English', 'History', 'Economics', 'Computer Science', 'Psychology', 'Fine Arts'];
+const INTERESTS = ['Technology & AI', 'Quantum & Deep Tech', 'Robotics & Automation', 'Bio-Engineering & Genetics', 'Space & Clean Energy', 'Science & Research', 'Arts & Design', 'Business & Finance', 'Law & Governance', 'Medicine & Health', 'Sports', 'Creative Writing'];
+const STRENGTHS = ['Problem Solving', 'Analytical Thinking', 'Algorithmic Logic', 'Creativity', 'Communication', 'Leadership', 'Research & Experimentation', 'Systems Architecture', 'Empathy', 'Discipline', 'Public Speaking'];
+const SUBJECTS = ['Mathematics', 'Physics', 'Computer Science & AI', 'Chemistry', 'Biology & Biotechnology', 'Economics', 'Psychology & Cognitive Science', 'English', 'History', 'Fine Arts'];
 
 import { ModalShell } from './ModalShell';
 

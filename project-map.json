@@ -17,6 +17,9 @@
       "./components/PrivacyPolicy",
       "./components/TermsOfService",
       "./components/ContactUs",
+      "./components/ErrorBoundary",
+      "./components/Toast",
+      "./components/GeneratingOverlay",
       "./types",
       "./services/geminiService",
       "lucide-react",
@@ -85,6 +88,17 @@
     "purpose": "UI Component"
   },
   {
+    "path": "src/components/ErrorBoundary.tsx",
+    "exports": [
+      "ErrorBoundary"
+    ],
+    "imports": [
+      "react",
+      "lucide-react"
+    ],
+    "purpose": "UI Component"
+  },
+  {
     "path": "src/components/ExperienceForm.tsx",
     "exports": [
       "ExperienceData",
@@ -102,6 +116,18 @@
     "path": "src/components/ExploreCareers.tsx",
     "exports": [
       "ExploreCareers"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/GeneratingOverlay.tsx",
+    "exports": [
+      "GeneratingOverlay"
     ],
     "imports": [
       "react",
@@ -125,6 +151,19 @@
     "purpose": "UI Component"
   },
   {
+    "path": "src/components/ModalShell.tsx",
+    "exports": [
+      "ModalShell"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
     "path": "src/components/OpenSchooling.tsx",
     "exports": [
       "OpenSchooling"
@@ -144,12 +183,25 @@
     "imports": [
       "react",
       "../types",
-      "react-markdown",
-      "recharts",
       "motion/react",
       "lucide-react",
       "../lib/pdfExport",
-      "./AdBanner",
+      "../contexts/LanguageContext",
+      "../lib/utils",
+      "./ModalShell",
+      "./SlideContent"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/PrintLayout.tsx",
+    "exports": [
+      "PrintLayout"
+    ],
+    "imports": [
+      "react",
+      "../types",
+      "./SlideContent",
       "../contexts/LanguageContext"
     ],
     "purpose": "UI Component"
@@ -179,19 +231,37 @@
       "firebase/auth",
       "firebase/firestore",
       "lucide-react",
-      "jspdf",
       "../contexts/LanguageContext",
       "../contexts/ThemeContext",
       "../lib/translations",
       "../lib/utils",
       "./UserDetailsForm",
+      "./Toast",
       "../types",
+      "../lib/pdfExport",
       "./BasicInfoForm",
       "./SelectionList",
       "./ExperienceForm",
       "./EducationForm",
       "./SkillsForm",
-      "./ProjectsForm"
+      "./ProjectsForm",
+      "./ModalShell",
+      "./ProfileProgressBar",
+      "./ResumePreview"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ProfileProgressBar.tsx",
+    "exports": [
+      "ProfileProgressBar"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react",
+      "../contexts/LanguageContext",
+      "../lib/utils"
     ],
     "purpose": "UI Component"
   },
@@ -217,9 +287,19 @@
     "imports": [
       "react",
       "motion/react",
-      "lucide-react",
       "./AdBanner",
       "../contexts/LanguageContext"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/ResumePreview.tsx",
+    "exports": [
+      "ResumePreview"
+    ],
+    "imports": [
+      "react",
+      "../types"
     ],
     "purpose": "UI Component"
   },
@@ -245,7 +325,26 @@
       "react",
       "../contexts/LanguageContext",
       "lucide-react",
-      "./SelectionList"
+      "./SelectionList",
+      "../lib/utils"
+    ],
+    "purpose": "UI Component"
+  },
+  {
+    "path": "src/components/SlideContent.tsx",
+    "exports": [
+      "getIcon",
+      "SlideContent"
+    ],
+    "imports": [
+      "react",
+      "../types",
+      "react-markdown",
+      "recharts",
+      "lucide-react",
+      "../contexts/LanguageContext",
+      "./AdBanner",
+      "motion/react"
     ],
     "purpose": "UI Component"
   },
@@ -277,6 +376,18 @@
     "purpose": "UI Component"
   },
   {
+    "path": "src/components/Toast.tsx",
+    "exports": [
+      "Toast"
+    ],
+    "imports": [
+      "react",
+      "motion/react",
+      "lucide-react"
+    ],
+    "purpose": "UI Component"
+  },
+  {
     "path": "src/components/UserDetailsForm.tsx",
     "exports": [
       "UserDetailsForm"
@@ -294,7 +405,9 @@
       "./EducationForm",
       "./SkillsForm",
       "./ProjectsForm",
-      "../lib/utils"
+      "../lib/utils",
+      "./ProfileProgressBar",
+      "./ModalShell"
     ],
     "purpose": "UI Component"
   },
@@ -322,6 +435,17 @@
     "purpose": "React Context/State Management"
   },
   {
+    "path": "src/drafts/PrintLayoutCover.tsx",
+    "exports": [
+      "PrintLayoutCoverDraft"
+    ],
+    "imports": [
+      "react",
+      "../types"
+    ],
+    "purpose": "General Logic"
+  },
+  {
     "path": "src/firebase.ts",
     "exports": [
       "auth",
@@ -337,12 +461,17 @@
     "purpose": "General Logic"
   },
   {
-    "path": "src/lib/pdfExport.ts",
+    "path": "src/lib/pdfExport.tsx",
     "exports": [],
     "imports": [
       "jspdf",
-      "html2canvas",
-      "../types"
+      "html-to-image",
+      "../types",
+      "react-dom/client",
+      "../components/PrintLayout",
+      "../components/ResumePreview",
+      "../contexts/LanguageContext",
+      "react"
     ],
     "purpose": "Utility/Library functions"
   },
@@ -360,8 +489,10 @@
     "path": "src/lib/utils.ts",
     "exports": [
       "cn",
+      "calculateCompletion",
       "getFirstIncompleteStep",
-      "isProfileComplete"
+      "isProfileComplete",
+      "cleanObject"
     ],
     "imports": [
       "clsx",
@@ -377,7 +508,8 @@
       "react-dom/client",
       "./App.tsx",
       "./contexts/LanguageContext",
-      "./contexts/ThemeContext"
+      "./contexts/ThemeContext",
+      "virtual:pwa-register"
     ],
     "purpose": "General Logic"
   },
@@ -399,5 +531,11 @@
     ],
     "imports": [],
     "purpose": "Type Definitions"
+  },
+  {
+    "path": "src/vite-env.d.ts",
+    "exports": [],
+    "imports": [],
+    "purpose": "General Logic"
   }
 ]
