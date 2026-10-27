@@ -10,11 +10,11 @@ service cloud.firestore {
     function isOwner(userId) {
       return isAuthenticated() && request.auth.uid == userId;
     }
-    // Admins can read every learner result. Replace the placeholder with real Google account emails.
+    // Admins can read every learner result. Add more Google account emails to the list as needed.
     function isAdmin() {
       return isAuthenticated()
         && request.auth.token.email_verified == true
-        && request.auth.token.email in ['REPLACE_WITH_ADMIN_EMAIL@example.com'];
+        && request.auth.token.email in ['i.k.shaikh@gmail.com'];
     }
 
     // ===============================================================

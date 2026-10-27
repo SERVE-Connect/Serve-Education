@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# .env.production is committed on purpose: it may hold PUBLIC values only (e.g. the reCAPTCHA site key). Never put secrets in it.
+!.env.production
